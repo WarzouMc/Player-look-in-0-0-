@@ -20,9 +20,9 @@ private void Tp(int j) {
         double Y = Math.sin (vPitch) * Math.sin (vYaw);
         double Z = Math.cos (vPitch);
 
-        Vector vecteur = new Vector(X, Z, Y);
+        Vector vector = new Vector(X, Z, Y);
 
-        float yaw = main.getPlayerInGame().get(j).getLocation().setDirection(vecteur).getYaw();
+        float yaw = main.getPlayerInGame().get(j).getLocation().setDirection(vector).getYaw();
         loc = new Location(config.getWorld(), x, y+4, z, yaw, 0.0f);
 
         main.getPlayerInGame().get(j).teleport(loc);
