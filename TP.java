@@ -1,13 +1,12 @@
-private void Tp(int j) {
-        ConfigSetup.Config config = new ConfigSetup.Config(main);
-        float x = ( float ) (main.getPlayerTeleportation().get(j)[0] + 0.5);
-        float z = ( float ) (main.getPlayerTeleportation().get(j)[1] + 0.5);
-        float y = config.getWorld().getHighestBlockYAt((int)x, (int)z);
+private void Tp() {
+        float x = ( float ) (xLocation + 0.5);
+        float z = ( float ) (zLocation + 0.5);
+        float y = world.getHighestBlockYAt((int)x, (int)z);
 
-        Location loc = new Location(config.getWorld(), x, y+4, z, 0, 0);
+        Location loc = new Location(world, x, y+4, z, 0, 0);
         loc.getWorld().loadChunk(loc.getChunk());
 
-        Location center = new Location(config.getWorld(), 0.5, 100, 0.5);
+        Location center = new Location(world, 0.5, 100, 0.5);
 
         double dX = loc.getX() - center.getX();
         double dY = loc.getY() - center.getY();
@@ -22,8 +21,8 @@ private void Tp(int j) {
 
         Vector vector = new Vector(X, Z, Y);
 
-        float yaw = main.getPlayerInGame().get(j).getLocation().setDirection(vector).getYaw();
-        loc = new Location(config.getWorld(), x, y+4, z, yaw, 0.0f);
+        float yaw = player.getLocation().setDirection(vector).getYaw();
+        loc = new Location(world, x, y+4, z, yaw, 0.0f);
 
-        main.getPlayerInGame().get(j).teleport(loc);
+        player.teleport(loc);
     }
